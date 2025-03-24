@@ -25,6 +25,7 @@ classDiagram
         -nome: String
         -cpf: String
         -email: String
+        -telefone: String
         -estado: String
         -cep: String
         -cidade: String
