@@ -114,6 +114,6 @@ class cartaoDebito {
     cartaoCredito "0..1" --> "0..1" Pagamento
     cartaoDebito "0..1" --> "0..1" Pagamento
     Pagamento "1" --> "1" Aluguel
-    Aluguel "1..1" <-- "1..1" Veiculo
+    Aluguel "0..1" <-- "1..1" Veiculo
     Aluguel "0..N" <-- "1..1" Cliente
 ```
