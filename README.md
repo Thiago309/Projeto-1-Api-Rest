@@ -38,7 +38,7 @@ classDiagram
         -idCartao: Long
         -idAluguel: Long
         -dataEfetuado: LocalDate
-        -Valor: Double 
+        -valor: BigDecimal(10,2)
     }
 
     class cartaoCredito {
@@ -48,7 +48,7 @@ classDiagram
         -bandeira: String
         -titular: String
         -numeroParcelas: Integer
-        -valor: Long
+        -valor: BigDecimal(10,2)
     }
 
 class cartaoDebito {
@@ -57,7 +57,7 @@ class cartaoDebito {
         -cvv: Integer
         -bandeira: String
         -titular: String
-        -valor: Long
+        -valor: BigDecimal(10,2)
     }
 
     class Aluguel {
@@ -66,7 +66,7 @@ class cartaoDebito {
         -idCliente: Long
         -dataInicio: LocalDate
         -dataFim: LocalDate
-        -valorTotal: Double
+        -valorTotal: BigDecimal(10,2)
     }
 
     class VeiculoController {
