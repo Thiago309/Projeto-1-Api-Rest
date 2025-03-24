@@ -34,6 +34,7 @@ classDiagram
     
     class Pagamento {
         -idPagamento: Long
+        -idCartao: Long
         -idAluguel: Long
         -dataEfetuado: LocalDate
         -Valor: Double 
@@ -41,7 +42,6 @@ classDiagram
 
     class cartaoCredito {
         -idCartao: Long
-        -idPagamento: Long
         -numero: Integer
         -cvv: Integer
         -bandeira: String
@@ -52,7 +52,6 @@ classDiagram
 
 class cartaoDebito {
         -idCartao: Long
-        -idPagamento: Long
         -numero: Integer
         -cvv: Integer
         -bandeira: String
