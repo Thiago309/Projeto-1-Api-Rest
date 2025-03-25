@@ -41,22 +41,13 @@ classDiagram
         -valor: BigDecimal(10,2)
     }
 
-    class cartaoCredito {
+    class infoCard {
         -idCartao: Long
         -numero: Integer
         -cvv: Integer
         -bandeira: String
         -titular: String
         -numeroParcelas: Integer
-        -valor: BigDecimal(10,2)
-    }
-
-class cartaoDebito {
-        -idCartao: Long
-        -numero: Integer
-        -cvv: Integer
-        -bandeira: String
-        -titular: String
         -valor: BigDecimal(10,2)
     }
 
@@ -111,9 +102,8 @@ class cartaoDebito {
     VeiculoService --> VeiculoRepository
     AluguelService --> AluguelRepository
     AluguelService --> VeiculoRepository
-    cartaoCredito "0..1" --> "0..1" Pagamento
-    cartaoDebito "0..1" --> "0..1" Pagamento
-    Pagamento "1..1" --> "1..1" Aluguel
+    infoCard "0..1" --> "0..1" Pagamento
+    Pagamento "0..1" --> "1..1" Aluguel
     Aluguel "0..1" <-- "1..1" Veiculo
-    Aluguel "0..N" <-- "1..1" Cliente
+    Aluguel "0..1" <-- "1..1" Cliente
 ```
