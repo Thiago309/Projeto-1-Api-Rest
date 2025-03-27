@@ -59,51 +59,8 @@ classDiagram
         -dataFim: LocalDate
         -valorTotal: BigDecimal(10,2)
     }
-
-    class VeiculoController {
-        +listarTodos(disponivel: boolean): List~Veiculo~
-        +criarVeiculo(veiculoDTO: VeiculoDTO): ResponseEntity~Veiculo~
-    }
-
-    class ClienteController {
-        +criarCliente(clienteDTO: ClienteDTO): ResponseEntity~Cliente~
-    }
-
-    class AluguelController {
-        +criarAluguel(aluguelDTO: AluguelDTO): ResponseEntity~Aluguel~
-        +buscarAluguel(id: Long): ResponseEntity~Aluguel~
-    }
-
-    class VeiculoService {
-        -veiculoRepository: VeiculoRepository
-        +listarVeiculos(disponivel: boolean): List~Veiculo~
-        +salvarVeiculo(veiculo: Veiculo): Veiculo
-    }
-
-    class AluguelService {
-        -aluguelRepository: AluguelRepository
-        -veiculoRepository: VeiculoRepository
-        +criarAluguel(aluguelDTO: AluguelDTO): Aluguel
-    }
-
-    class VeiculoRepository {
-        <<Interface>>
-        +findByDisponivel(boolean): List~Veiculo~
-    }
-
-    class AluguelRepository {
-        <<Interface>>
-        +save(Aluguel): Aluguel
-    }
-    
-    VeiculoController --> VeiculoService
-    ClienteController --> ClienteService
-    AluguelController --> AluguelService
-    VeiculoService --> VeiculoRepository
-    AluguelService --> AluguelRepository
-    AluguelService --> VeiculoRepository
-    infoCard "0..1" --> "0..1" Pagamento
-    Pagamento "0..1" --> "1..1" Aluguel
-    Aluguel "0..1" <-- "1..1" Veiculo
-    Aluguel "0..1" <-- "1..1" Cliente
+    infoCard "1..1" --> "1..1" Pagamento
+    Pagamento "1..1" --> "1..1" Aluguel
+    Aluguel "1..1" <-- "1..1" Veiculo
+    Aluguel "1..1" <-- "1..1" Cliente
 ```
