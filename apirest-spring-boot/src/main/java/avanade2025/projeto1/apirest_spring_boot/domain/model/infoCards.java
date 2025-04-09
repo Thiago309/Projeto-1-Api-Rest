@@ -1,14 +1,12 @@
 package avanade2025.projeto1.apirest_spring_boot.domain.model;
 
-
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
-@MappedSuperclass
-public abstract class infoCards {
+@Entity(name = "tb_cartoes")
+public class infoCards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private Long idCartao;
 
     @Column(name = "numero_cartao", nullable = false, length = 16, unique = true)

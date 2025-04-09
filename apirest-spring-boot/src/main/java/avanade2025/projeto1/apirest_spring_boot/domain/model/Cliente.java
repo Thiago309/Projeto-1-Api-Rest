@@ -1,34 +1,45 @@
 package avanade2025.projeto1.apirest_spring_boot.domain.model;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity(name = "tb_cliente")
+@Entity
+@Table(name = "tb_cliente")  // Usando @Table para nome de tabela
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="PK_id")
-    private long idCliente;
-    @Column(name="nome", nullable = false)
+    private Long idCliente;  // Alterado para Long e nome padronizado
+
+    @Column(name = "nome", nullable = false)
     private String nome;
-    @Column(name="cpf", length = 20,nullable = false)
+
+    @Column(name = "cpf", length = 20, nullable = false, unique = true)  // Adicionado unique
     private String cpf;
-    @Column(name="email", nullable = false)
+
+    @Column(name = "email", nullable = false, unique = true)  // Email único
     private String email;
-    @Column(name="telefone", length = 20,nullable = false)
+
+    @Column(name = "telefone", length = 20, nullable = false)
     private String telefone;
-    @Column(name="estado", nullable = false)
+
+    @Column(name = "estado", nullable = false)
     private String estado;
-    @Column(name="cep", length = 20, nullable = false)
+
+    @Column(name = "cep", length = 20, nullable = false)
     private String cep;
-    @Column(name="cidade", nullable = false)
+
+    @Column(name = "cidade", nullable = false)
     private String cidade;
-    @Column(name="endereco", nullable = false)
+
+    @Column(name = "endereco", nullable = false)
     private String endereco;
-    @Column(name="complemento", nullable = false)
+
+    @Column(name = "complemento", nullable = false)
     private String complemento;
 
-    public long getIdCliente() {return idCliente;}
-    public void setIdCliente(long idCliente) {this.idCliente = idCliente;}
+    public Long getIdCliente() {return idCliente;}
+    public void setIdCliente(Long id) {this.idCliente = id;}
 
     public String getNome() {return nome;}
     public void setNome(String nome) {this.nome = nome;}
@@ -52,7 +63,6 @@ public class Cliente {
     public void setCidade(String cidade) {this.cidade = cidade;}
 
     public String getEndereco() {return endereco;}
-
     public void setEndereco(String endereco) {this.endereco = endereco;}
 
     public String getComplemento() {return complemento;}

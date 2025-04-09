@@ -2,40 +2,50 @@ package avanade2025.projeto1.apirest_spring_boot.domain.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Entity(name = "tb_registro")
-public class Aluguel{
+public class Aluguel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="PK_id", nullable = false)
-    private long idAluguel;
-    @Column(name="FK_idVeiculo", nullable = false)
-    private long idVeiculoAlu;
-    @Column(name="FK_idCliente", nullable = false)
-    private long idCliente;
-    @Column(name="Inicio", nullable = false)
-    private Date dataInicio;
-    @Column(name="Fim", nullable = false)
-    private Date dataFim;
-    @Column(name="Total", nullable = false, precision = 10, scale = 2)
-    private BigDecimal valor;
+    private Long idAluguel;  // Padronizar para Long ao invés de long
 
-    public long getIdAluguel() {return idAluguel;}
-    public void setIdAluguel(long idAluguel) {this.idAluguel = idAluguel;}
+    @OneToOne(cascade = CascadeType.ALL)
+    private Veiculo veiculo;  // Renomeado para veiculo (sem "id" no nome)
 
-    public long getIdVeiculoAlu() {return idVeiculoAlu;}
-    public void setIdVeiculoAlu(long idVeiculoAlu) {this.idVeiculoAlu = idVeiculoAlu;}
+    @OneToOne(cascade = CascadeType.ALL)
+    private Cliente cliente;
 
-    public long getIdCliente() {return idCliente;}
-    public void setIdCliente(long idCliente) {this.idCliente = idCliente;}
+    @OneToOne(cascade = CascadeType.ALL)
+    private Pagamento pagamento;
 
-    public Date getDataInicio() {return dataInicio;}
-    public void setDataInicio(Date dataInicio) {this.dataInicio = dataInicio;}
+    @Column(name = "data_inicio", nullable = false)
+    private LocalDate dataInicio;  // Usar LocalDate ao invés de Date (mais moderno)
+    @Column(name = "data_fim", nullable = false)
+    private LocalDate dataFim;
+    @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorTotal;  // Renomeado para valorTotal para ser mais descritivo
 
-    public Date getDataFim() {return dataFim;}
-    public void setDataFim(Date dataFim) {this.dataFim = dataFim;}
+    // Getters e Setters (mantidos, mas ajustados para os novos nomes)
+    public Long getIdAluguel() {return idAluguel;}
+    public void setIdAluguel(Long id) {this.idAluguel = id;}
 
-    public BigDecimal getValor() {return valor;}
-    public void setValor(BigDecimal valor) {this.valor = valor;}
+    public Veiculo getVeiculo() {return veiculo;}
+    public void setVeiculo(Veiculo veiculo) {this.veiculo = veiculo;}
+
+    public Pagamento getPagamento() {return pagamento;}
+    public void setPagamento(Pagamento pagamento) {this.pagamento = pagamento;}
+
+    public Cliente getCliente() {return cliente;}
+    public void setCliente(Cliente cliente) {this.cliente = cliente;}
+
+    public LocalDate getDataInicio() {return dataInicio;}
+    public void setDataInicio(LocalDate dataInicio) {this.dataInicio = dataInicio;}
+
+    public LocalDate getDataFim() {return dataFim;}
+    public void setDataFim(LocalDate dataFim) {this.dataFim = dataFim;}
+
+    public BigDecimal getValorTotal() {return valorTotal;}
+    public void setValorTotal(BigDecimal valorTotal) {this.valorTotal = valorTotal;}
 }

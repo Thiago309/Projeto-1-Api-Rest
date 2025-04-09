@@ -1,36 +1,48 @@
 package avanade2025.projeto1.apirest_spring_boot.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity(name = "tb_veiculos")
+@Entity
+@Table(name = "tb_veiculos")  // Usando @Table para nome de tabela
 public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private long idVeiculo;
-    @Column(name="placa")
+    private Long idVeiculo;  // Alterado para Long e nome padronizado
+
+    @Column(name = "placa", unique = true)  // Placa deve ser única
     private String placa;
-    @Column(name="modelo")
+
+    @Column(name = "modelo")
     private String modelo;
-    @Column(name="marca")
+
+    @Column(name = "marca")
     private String marca;
-    @Column(name="categoria")
+
+    @Column(name = "categoria")
     private String categoria;
-    @Column(name="cor")
+
+    @Column(name = "cor")
     private String cor;
-    @Column(name="quilometros")
-    private long kmRodados;
-    @Column(name="ano")
+
+    @Column(name = "quilometros")
+    private Long kmRodados;  // Alterado para Long
+
+    @Column(name = "ano")
     private String ano;
-    @Column(name="status")
-    private boolean disponivel;
-    @Column(name="preço")
+
+    @Column(name = "status")
+    private Boolean disponivel;  // Alterado para Boolean
+
+    @Column(name = "preco")  // Corrigido nome (evitar caracteres especiais)
     private BigDecimal valorDiaria;
 
-    public long getIdVeiculo() {return idVeiculo;}
-    public void setIdVeiculo(long idVeiculo) {this.idVeiculo = idVeiculo;}
+    // Getters e Setters (ajustados para os novos tipos)
+    public Long getIdVeiculo() {return idVeiculo;}
+    public void setIdVeiculo(Long id) {this.idVeiculo = id;}
 
     public String getPlaca() {return placa;}
     public void setPlaca(String placa) {this.placa = placa;}
@@ -47,15 +59,16 @@ public class Veiculo {
     public String getCor() {return cor;}
     public void setCor(String cor) {this.cor = cor;}
 
-    public long getKmRodados() {return kmRodados;}
-    public void setKmRodados(long kmRodados) {this.kmRodados = kmRodados;}
+    public Long getKmRodados() {return kmRodados;}
+    public void setKmRodados(Long kmRodados) {this.kmRodados = kmRodados;}
 
     public String getAno() {return ano;}
     public void setAno(String ano) {this.ano = ano;}
 
-    public boolean isDisponivel() {return disponivel;}
-    public void setDisponivel(boolean disponivel) {this.disponivel = disponivel;}
+    public Boolean getDisponivel() {return disponivel;}
+    public void setDisponivel(Boolean disponivel) {this.disponivel = disponivel;}
 
     public BigDecimal getValorDiaria() {return valorDiaria;}
     public void setValorDiaria(BigDecimal valorDiaria) {this.valorDiaria = valorDiaria;}
+
 }
